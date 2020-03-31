@@ -11,11 +11,11 @@
 
 - 3DCNN
 
-![3DCNN acc](.\Result\01\3DCNN\Batch8_Epoch20_LR0.0001_acc.png)![3DCNN loss](.\Result\01\3DCNN\Batch8_Epoch20_LR0.0001_loss.png)
+![3DCNN acc](./Result/01/3DCNN/Batch8_Epoch20_LR0.0001_acc.png)![3DCNN loss](./Result/01/3DCNN/Batch8_Epoch20_LR0.0001_loss.png)
 
 - C3D
 
-![C3D acc](.\Result\01\C3D\Batch8_Epoch20_LR0.0001_acc.png)![C3D loss](.\Result\01\C3D\Batch8_Epoch20_LR0.0001_loss.png)
+![C3D acc](./Result/01/C3D/Batch8_Epoch20_LR0.0001_acc.png)![C3D loss](./Result/01/C3D/Batch8_Epoch20_LR0.0001_loss.png)
 
 ## Require
 
