@@ -1,0 +1,6 @@
+.vscode/
+UCF-101/
+video_classification/
+img/
+*.hdf5
+*.h5
