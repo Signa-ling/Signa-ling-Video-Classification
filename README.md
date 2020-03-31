@@ -2,12 +2,20 @@
 
 ## Overview
 
-- Kerasでの実装
+- UCF-101より10クラスを対象に動画分類を行った
+- 実装はKeras
   - 3DCNN
   - C3D
-- UCF-101より10クラスを対象に分類を行った
 
 ## Result
+
+- 3DCNN
+
+![3DCNN acc](.\Result\01\3DCNN\Batch8_Epoch20_LR0.0001_acc.png)![3DCNN loss](.\Result\01\3DCNN\Batch8_Epoch20_LR0.0001_loss.png)
+
+- C3D
+
+![C3D acc](.\Result\01\C3D\Batch8_Epoch20_LR0.0001_acc.png)![C3D loss](.\Result\01\C3D\Batch8_Epoch20_LR0.0001_loss.png)
 
 ## Require
 
@@ -25,9 +33,3 @@
 - scikit-learn==0.22.2
 - Tensorflow-gpu==2.0.0
 - tqdm==4.43.0
-
-## Todo
-
-- CNN + LSTM 実装
-- コード綺麗見やすく
-- 精度改善
