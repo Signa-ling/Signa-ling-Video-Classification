@@ -4,11 +4,20 @@ from keras.models import Sequential
 from keras.optimizers import Adam
 
 
-class model_create():
+class ModelCreate():
     def __init__(self, shape, lr, num_classes):
         self.shape = shape
         self.lr = lr
         self.num_classes = num_classes
+
+    def model_compile(self, model):
+        opt = Adam(lr=self.lr)
+
+        model.compile(loss='categorical_crossentropy',
+                      optimizer=opt, metrics=['acc'])
+        model.summary()
+
+        return model
 
     def CNN3D_model(self):
         model = Sequential()
@@ -32,12 +41,7 @@ class model_create():
         model.add(Dropout(0.5))
         model.add(Dense(self.num_classes, activation='softmax'))
 
-        opt = Adam(lr=self.lr)
-        model.compile(loss='categorical_crossentropy',
-                      optimizer=opt, metrics=['acc'])
-        model.summary()
-
-        return model
+        return self.model_compile(model)
 
     def C3D_model(self):
         model = Sequential()
@@ -94,10 +98,4 @@ class model_create():
         model.add(Dropout(.5))
         model.add(Dense(self.num_classes, activation='softmax', name='fc8'))
 
-        opt = Adam(lr=self.lr)
-
-        model.compile(loss='categorical_crossentropy',
-                      optimizer=opt, metrics=['acc'])
-        model.summary()
-
-        return model
+        return self.model_compile(model)

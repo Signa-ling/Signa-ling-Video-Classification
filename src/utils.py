@@ -79,7 +79,7 @@ def load_json():
     image_shape = tuple(json_data['CONFIG']['IMG_SHAPE'])
     load_ver = json_data['CONFIG']['LOAD_VERSION']['01']
     model_mode = json_data['CONFIG']['MODEL_MODE']['3DCNN']
-    use_mode = json_data['CONFIG']['USE_MODE']['TRAIN']
+    use_mode = json_data['CONFIG']['USE_MODE']['TEST']
     color_flag = json_data['CONFIG']['COLOR_FLAG']
     frame_flag = json_data['CONFIG']['FRAME_FLAG']
     configs = [image_shape, load_ver, model_mode, use_mode,

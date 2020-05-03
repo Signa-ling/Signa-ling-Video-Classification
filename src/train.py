@@ -5,11 +5,12 @@ from sklearn.model_selection import train_test_split
 
 from utils import make_dir, load_json, plot_history
 from load_data import load_data
-from model import model_create
+from model import ModelCreate
 
 
 def main():
     h_params, configs = load_json()
+    print(configs)
     BATCH_SIZE, EPOCHS, NUM_CLASSES, LEARNING_RATE = h_params
     image_shape, load_ver, model_mode, use_mode, color_flag, frame_flag = configs
 
@@ -22,7 +23,7 @@ def main():
                                                           test_size=0.2)
 
     # モデル作成, model_modeに合わせて構築を変える
-    model = model_create(X_train, LEARNING_RATE, NUM_CLASSES)
+    model = ModelCreate(X_train, LEARNING_RATE, NUM_CLASSES)
     if model_mode == '3DCNN':
         model = model.CNN3D_model()
     elif model_mode == 'C3D':

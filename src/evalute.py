@@ -1,7 +1,7 @@
 import h5py
 
 from load_data import load_data
-from model import model_create
+from model import ModelCreate
 from utils import load_json
 
 
@@ -18,7 +18,7 @@ def main():
     X_test, y_test = load_data(image_shape, NUM_CLASSES, load_ver, use_mode,
                                color_flag=color_flag, frame_flag=frame_flag)
 
-    model = model_create(X_test, LEARNING_RATE, NUM_CLASSES)
+    model = ModelCreate(X_test, LEARNING_RATE, NUM_CLASSES)
     if model_mode == '3DCNN':
         model = model.CNN3D_model()
     elif model_mode == 'C3D':
