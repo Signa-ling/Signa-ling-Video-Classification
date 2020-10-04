@@ -60,10 +60,4 @@ Test accuracy:  0.570694088935852
 
 ### Libraly
 
-- Keras==2.3.1
-- matplotlib==3.1.3
-- opencv-python==4.2.0.32
-- Pillow==7.0.0
-- scikit-learn==0.22.2
-- Tensorflow-gpu==2.3.0
-- tqdm==4.43.0
+See "requirements.txt".
