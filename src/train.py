@@ -22,12 +22,17 @@ def main():
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train,
                                                           test_size=0.2)
 
+    print(X_train.ndim, X_train.shape, type(X_train))
     # モデル作成, model_modeに合わせて構築を変える
     model = ModelCreate(X_train, LEARNING_RATE, NUM_CLASSES)
     if model_mode == '3DCNN':
         model = model.CNN3D_model()
     elif model_mode == 'C3D':
         model = model.C3D_model()
+    elif model_mode == 'LSTM':
+        model = model.LSTM_model()
+        X_train = X_train.transpose((0, 3, 1, 2, 4))
+        X_valid = X_valid.transpose((0, 3, 1, 2, 4))
 
     history = model.fit(X_train, y_train, validation_data=(X_valid, y_valid),
                         batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1)

@@ -23,6 +23,9 @@ def main():
         model = model.CNN3D_model()
     elif model_mode == 'C3D':
         model = model.C3D_model()
+    elif model_mode == 'LSTM':
+        model = model.LSTM_model()
+        X_test = X_test.transpose((0, 3, 1, 2, 4))
 
     model.load_weights(weights_path)
     score = model.evaluate(X_test, y_test, verbose=1)
