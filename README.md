@@ -7,6 +7,7 @@
 - The following models are implemented.
   - 3DCNN
   - C3D
+  - LSTM
 
 - Data breakdown
   - Height×Width : 112×112
@@ -18,26 +19,22 @@
 
 ### 3DCNN
 
-- 20epoch
-
-![3DCNN acc 20epoch](./Result/01/3DCNN/Batch8_Epoch20_LR0_0001_acc.png)![3DCNN loss 20epoch](./Result/01/3DCNN/Batch8_Epoch20_LR0_0001_loss.png)
+![3DCNN acc 20epoch](./Result/01/3DCNN/Batch8_Epoch20_LR0.0001_acc.png)![3DCNN loss 20epoch](./Result/01/3DCNN/Batch8_Epoch20_LR0.0001_loss.png)
 
 ```evalute.py
-Test loss:  1.15104304780767
-Test accuracy:  0.6323907375335693
+Test loss:  1.8186967372894287
+Test accuracy:  0.305912584066391
 ```
 
 ---
 
 ### C3D
 
-- 20epoch
-
-![C3D acc 20epoch](./Result/01/C3D/Batch8_Epoch20_LR0_0001_acc.png)![C3D loss 20epoch](./Result/01/C3D/Batch8_Epoch20_LR0_0001_loss.png)
+![C3D acc 20epoch](./Result/01/C3D/Batch8_Epoch20_LR0.0001_acc.png)![C3D loss 20epoch](./Result/01/C3D/Batch8_Epoch20_LR0.0001_loss.png)
 
 ```evalute.py
-Test loss:  4.000657923423845
-Test accuracy:  0.596401035785675
+Test loss:  2.2490131855010986
+Test accuracy:  0.5089974403381348
 ```
 
 ---
@@ -47,8 +44,8 @@ Test accuracy:  0.596401035785675
 ![LSTM acc 20 epoch](./Result/01/LSTM/Batch8_Epoch20_LR0.0001_acc.png)![LSTM loss 20epoch](./Result/01/LSTM/Batch8_Epoch20_LR0.0001_loss.png)
 
 ```evalute.py
-Test loss:  1.93994140625
-Test accuracy:  0.570694088935852
+Test loss:  1.3995455503463745
+Test accuracy:  0.5295630097389221
 ```
 
 ## Require
