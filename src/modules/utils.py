@@ -48,13 +48,8 @@ def get_train_test_list(data_list_path, root_path, class_num, ver):
     return data_list, train_label, class_dict
 
 
-def make_dir(dir_path):
-    if not os.path.isdir(dir_path):
-        os.makedirs(dir_path)
-        print("Make Directory {0}".format(dir_path))
-
-
 def return_save_img_path(file_name, save_path):
+    # video_to_frame.pyで使用
     file_name_split = os.path.split(file_name)
     save_dir_name = file_name_split[0]
     save_img_name = file_name_split[1].split('.')
@@ -65,27 +60,10 @@ def return_save_img_path(file_name, save_path):
     return save_dir_path, save_img_path
 
 
-def load_json():
-    with open('./config.json', 'r') as json_file:
-        json_data = json.load(json_file)
-
-    # 各パラメータ, 設定
-    BATCH_SIZE = json_data['HYPER_PARAMETER']['BATCH_SIZE']
-    EPOCHS = json_data['HYPER_PARAMETER']['EPOCHS']
-    NUM_CLASSES = json_data['HYPER_PARAMETER']['NUM_CLASSES']
-    LEARNING_RATE = json_data['HYPER_PARAMETER']['LEARNING_RATE']
-    h_params = [BATCH_SIZE, EPOCHS, NUM_CLASSES, LEARNING_RATE]
-
-    image_shape = tuple(json_data['CONFIG']['IMG_SHAPE'])
-    load_ver = json_data['CONFIG']['LOAD_VERSION']['01']
-    model_mode = json_data['CONFIG']['MODEL_MODE']['LSTM']
-    use_mode = json_data['CONFIG']['USE_MODE']['TRAIN']
-    color_flag = json_data['CONFIG']['COLOR_FLAG']
-    frame_flag = json_data['CONFIG']['FRAME_FLAG']
-    configs = [image_shape, load_ver, model_mode, use_mode,
-               color_flag, frame_flag]
-
-    return h_params, configs
+def make_dir(dir_path):
+    if not os.path.isdir(dir_path):
+        os.makedirs(dir_path)
+        print("Make Directory {0}".format(dir_path))
 
 
 def plot_history(history, result_path, result_name):

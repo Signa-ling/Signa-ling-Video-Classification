@@ -5,8 +5,8 @@ from tqdm import tqdm
 from keras.preprocessing.image import load_img, img_to_array
 from keras.utils import np_utils
 
-from utils import get_train_test_list, return_save_img_path
-from video_to_frame import video_to_frame
+from modules.utils import get_train_test_list, return_save_img_path
+from modules.video_to_frame import video_to_frame
 
 
 def _test_labeling(data_list, class_dict):
@@ -69,24 +69,29 @@ def _generator_img(image_shape, color_flag, imgs_path):
 
     print(imgs.shape, imgs.ndim)
 
-    return imgs
+    return imgs, depth
 
 
-def load_data(image_shape, class_num, ver, use_mode, color_flag=False, frame_flag=True):
+def load_data(flags, config_dict):
+    ver, num_classes = config_dict["version"], config_dict["num_classes"]
     data_list_path = "./ucfTrainTestlist/"
     root_path = './UCF-101/'
     save_root_path = './img/' + ver + '/'
 
-    data_list, train_label, class_dict = get_train_test_list(data_list_path, root_path, class_num, ver)
+    data_list, train_label, class_dict = get_train_test_list(data_list_path,
+                                                             root_path,
+                                                             num_classes,
+                                                             ver)
 
-    path_mode = use_mode
+    modes = ['test', 'train']
+    path_mode = modes[flags["mode"]]
 
     if path_mode == 'train':
         data = data_list[0]
     else:
         data = data_list[1]
 
-    if frame_flag:
+    if flags["frame"]:
         save_path = save_root_path + path_mode + '/'
         save_img_path_list = video_to_frame(root_path, save_path, data, ver)
 
@@ -100,11 +105,15 @@ def load_data(image_shape, class_num, ver, use_mode, color_flag=False, frame_fla
                 save_img_path_list.append(save_img_path)
 
     if path_mode == 'train':
-        X_train = _generator_img(image_shape, color_flag, save_img_path_list)
-        y_train = np_utils.to_categorical(train_label, class_num)
-        return X_train, y_train
+        X_train, depth = _generator_img(config_dict["img_shape"],
+                                        flags["color"],
+                                        save_img_path_list)
+        y_train = np_utils.to_categorical(train_label, num_classes)
+        return X_train, y_train, depth
 
-    X_test = _generator_img(image_shape, color_flag, save_img_path_list)
+    X_test, depth = _generator_img(config_dict["img_shape"],
+                                   flags["color"],
+                                   save_img_path_list)
     test_label = _test_labeling(data, class_dict)
-    y_test = np_utils.to_categorical(test_label, class_num)
-    return X_test, y_test
+    y_test = np_utils.to_categorical(test_label, num_classes)
+    return X_test, y_test, depth

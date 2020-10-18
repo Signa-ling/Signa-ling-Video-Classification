@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from utils import make_dir, return_save_img_path
+from modules.utils import make_dir, return_save_img_path
 
 
 def video_to_frame(root_path, save_path, data_list, ver):

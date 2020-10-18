@@ -2,7 +2,7 @@ import numpy as np
 
 from keras.layers import (Activation, Conv2D, Conv3D, Dense, Dropout,
                           Flatten, MaxPooling2D, MaxPooling3D, ZeroPadding3D)
-from keras.layers.recurrent import LSTM                          
+from keras.layers.recurrent import LSTM
 from keras.layers.wrappers import TimeDistributed
 from keras.models import Sequential
 from keras.optimizers import Adam
@@ -106,12 +106,9 @@ class ModelCreate():
         return self.model_compile(model)
 
     def LSTM_model(self):
-        input_shape = self.shape.transpose((0, 3, 1, 2, 4))
-        print(type(input_shape), input_shape.ndim, input_shape.shape)
-
         model = Sequential()
         model.add(TimeDistributed(Conv2D(32, (3, 3), activation='relu'),
-                                  input_shape=input_shape.shape[1:]))
+                                  input_shape=self.shape.shape[1:]))
         model.add(TimeDistributed(MaxPooling2D((2, 2), strides=(1, 1))))
 
         model.add(TimeDistributed(Conv2D(64, (3, 3), activation='relu')))
